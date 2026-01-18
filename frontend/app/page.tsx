@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-deep-obsidian flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
