@@ -144,7 +144,7 @@ export default function ProductSearchPage() {
                         <button
                             key={s}
                             onClick={() => setSource(s)}
-                            className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${source === s ? 'bg-luxury-gold text-black shadow-lg shadow-yellow-500/20' : 'bg-black/40 text-gray-400 hover:text-white'}`}
+                            className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${source === s ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/20' : 'bg-black/40 text-gray-400 hover:text-white'}`}
                         >
                             {s}
                         </button>
@@ -155,13 +155,13 @@ export default function ProductSearchPage() {
                 <div className="flex border-b border-white/10 mb-6">
                     <button
                         onClick={() => setActiveTab('link')}
-                        className={`flex-1 pb-4 text-center font-bold text-sm flex items-center justify-center gap-2 ${activeTab === 'link' ? 'text-white border-b-2 border-luxury-gold' : 'text-gray-500'}`}
+                        className={`flex-1 pb-4 text-center font-bold text-sm flex items-center justify-center gap-2 ${activeTab === 'link' ? 'text-white border-b-2 border-yellow-400' : 'text-gray-500'}`}
                     >
                         <Link size={16} /> Paste Link
                     </button>
                     <button
                         onClick={() => setActiveTab('image')}
-                        className={`flex-1 pb-4 text-center font-bold text-sm flex items-center justify-center gap-2 ${activeTab === 'image' ? 'text-white border-b-2 border-luxury-gold' : 'text-gray-500'}`}
+                        className={`flex-1 pb-4 text-center font-bold text-sm flex items-center justify-center gap-2 ${activeTab === 'image' ? 'text-white border-b-2 border-yellow-400' : 'text-gray-500'}`}
                     >
                         <Upload size={16} /> Upload Image
                     </button>
@@ -299,7 +299,7 @@ export default function ProductSearchPage() {
                                 </button>
                                 <button
                                     onClick={handlePopupSearch}
-                                    className="flex-1 bg-luxury-gold hover:bg-yellow-600 text-black font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+                                    className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
                                 >
                                     {loading ? 'Searching...' : 'Search Now'}
                                     {!loading && <ArrowRight size={16} />}

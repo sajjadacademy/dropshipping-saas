@@ -344,10 +344,10 @@ function PresetPill({ icon: Icon, label, active = false, onClick }: { icon: any,
     return (
         <button
             onClick={onClick}
-            className={`flex items-center gap-2 px-4 py-2 border rounded-full transition-all group ${active ? 'bg-luxury-gold text-black border-luxury-gold' : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-luxury-gold/50'}`}
+            className={`flex items-center gap-2 px-4 py-2 border rounded-full transition-all group ${active ? 'bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_rgba(250,204,21,0.4)]' : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-yellow-400/50 hover:text-yellow-400'}`}
         >
-            <Icon size={14} className={active ? 'text-black' : 'text-gray-400 group-hover:text-luxury-gold'} />
-            <span className={`text-xs font-bold ${active ? 'text-black' : 'text-gray-300 group-hover:text-white'}`}>{label}</span>
+            <Icon size={14} className={active ? 'text-black' : 'text-gray-400 group-hover:text-yellow-400'} />
+            <span className={`text-xs font-bold ${active ? 'text-black' : 'text-gray-300 group-hover:text-yellow-400'}`}>{label}</span>
         </button>
     );
 }
@@ -356,9 +356,9 @@ function PresetPill({ icon: Icon, label, active = false, onClick }: { icon: any,
 function FunctionalFilterDropdown({ label, value, options, onChange }: { label: string, value?: string | number, options: { l: string, v: string | number }[], onChange: (val: string) => void }) {
     return (
         <div className="relative group">
-            <button className={`flex items-center gap-2 px-3 py-2 border rounded-lg text-xs transition-all ${value ? 'bg-luxury-gold/10 border-luxury-gold text-luxury-gold' : 'bg-transparent border-white/20 text-gray-400 hover:text-white hover:border-white/50'}`}>
+            <button className={`flex items-center gap-2 px-3 py-2 border rounded-lg text-xs font-bold transition-all ${value ? 'bg-yellow-400 border-yellow-400 text-black shadow-lg shadow-yellow-400/20' : 'bg-transparent border-white/20 text-gray-400 hover:text-yellow-400 hover:border-yellow-400/50'}`}>
                 {label} {value ? `(${value})` : ''}
-                <Filter size={10} className="opacity-50" />
+                <Filter size={10} className={value ? "opacity-100 text-black" : "opacity-50"} />
             </button>
             <select
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"

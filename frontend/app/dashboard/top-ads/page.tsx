@@ -570,9 +570,9 @@ function FormatFilter({ selected, onApply }: { selected: string, onApply: (val: 
     const [temp, setTemp] = useState(selected);
     return (
         <div className="p-2 w-40">
-            <button onClick={() => setTemp('Video')} className={`w-full text-left px-3 py-2 rounded text-xs mb-1 ${temp === 'Video' ? 'bg-luxury-gold text-black font-bold' : 'text-gray-400 hover:bg-white/5'}`}>Video Only</button>
-            <button onClick={() => setTemp('Image')} className={`w-full text-left px-3 py-2 rounded text-xs mb-1 ${temp === 'Image' ? 'bg-luxury-gold text-black font-bold' : 'text-gray-400 hover:bg-white/5'}`}>Image Only</button>
-            <button onClick={() => setTemp('All')} className={`w-full text-left px-3 py-2 rounded text-xs ${temp === 'All' ? 'bg-luxury-gold text-black font-bold' : 'text-gray-400 hover:bg-white/5'}`}>All Formats</button>
+            <button onClick={() => setTemp('Video')} className={`w-full text-left px-3 py-2 rounded text-xs mb-1 ${temp === 'Video' ? 'bg-yellow-400 text-black font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-yellow-400'}`}>Video Only</button>
+            <button onClick={() => setTemp('Image')} className={`w-full text-left px-3 py-2 rounded text-xs mb-1 ${temp === 'Image' ? 'bg-yellow-400 text-black font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-yellow-400'}`}>Image Only</button>
+            <button onClick={() => setTemp('All')} className={`w-full text-left px-3 py-2 rounded text-xs ${temp === 'All' ? 'bg-yellow-400 text-black font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-yellow-400'}`}>All Formats</button>
             <ApplyButton onClick={() => onApply(temp)} />
         </div>
     )
@@ -675,11 +675,11 @@ function FilterDropdown({ icon: Icon, label, children }: { icon: React.ElementTy
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${isOpen ? 'bg-luxury-gold/10 border-luxury-gold text-luxury-gold' : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/30 hover:text-white'}`}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-bold transition-all ${isOpen ? 'bg-yellow-400 border-yellow-400 text-black shadow-lg shadow-yellow-400/20' : 'bg-white/5 border-white/10 text-gray-400 hover:border-yellow-400/50 hover:text-yellow-400'}`}
             >
-                <Icon size={14} />
+                <Icon size={14} className={isOpen ? 'text-black' : ''} />
                 {label}
-                <ChevronDown size={12} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={12} className={`transition-transform ${isOpen ? 'rotate-180 text-black' : ''}`} />
             </button>
 
             {isOpen && (
@@ -695,10 +695,10 @@ function PresetPill({ icon: Icon, label, active, onClick }: { icon: React.Elemen
     return (
         <button
             onClick={onClick}
-            className={`flex items-center gap-2 px-3 py-1.5 border rounded-full transition-all group ${active ? 'bg-luxury-gold/10 border-luxury-gold text-luxury-gold' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'}`}
+            className={`flex items-center gap-2 px-3 py-1.5 border rounded-full transition-all group ${active ? 'bg-yellow-400 border-yellow-400 text-black shadow-[0_0_15px_rgba(250,204,21,0.4)]' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-yellow-400 hover:border-yellow-400/50'}`}
         >
-            <Icon size={12} />
-            <span className="text-[10px] font-bold">{label}</span>
+            <Icon size={12} className={active ? 'text-black' : 'group-hover:text-yellow-400'} />
+            <span className={`text-[10px] font-bold ${active ? 'text-black' : ''}`}>{label}</span>
         </button>
     );
 }
