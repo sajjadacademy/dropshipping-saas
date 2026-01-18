@@ -9,7 +9,7 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'luxury-gold': '#D4AF37',
+                'luxury-gold': '#FFD700', // Bright Yellow/Gold as requested
                 'deep-obsidian': '#050505',
             },
             backgroundImage: {
@@ -18,7 +18,7 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
             boxShadow: {
-                'gold-glow': '0 0 15px -3px rgba(212, 175, 55, 0.3)',
+                'gold-glow': '0 0 15px -3px rgba(255, 215, 0, 0.5)',
             }
         },
     },

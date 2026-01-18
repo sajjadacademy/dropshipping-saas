@@ -28,8 +28,8 @@ export default function Sidebar() {
         <div className="w-64 h-screen bg-deep-obsidian border-r border-white/10 flex flex-col fixed left-0 top-0 z-50">
             {/* Logo */}
             <div className="p-6 border-b border-white/10">
-                <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-luxury-gold to-yellow-200 tracking-tighter">
-                    ZELVYRA
+                <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 tracking-tighter">
+                    DS shop
                 </h1>
             </div>
 
@@ -40,7 +40,7 @@ export default function Sidebar() {
                     <input
                         type="text"
                         placeholder="Search stores or URLs..."
-                        className="w-full bg-black/20 border border-white/10 rounded-lg pl-9 pr-3 py-2 text-xs text-white outline-none focus:border-luxury-gold/50 transition-colors placeholder:text-gray-600"
+                        className="w-full bg-black/20 border border-white/10 rounded-lg pl-9 pr-3 py-2 text-xs text-white outline-none focus:border-yellow-400/50 transition-colors placeholder:text-gray-600"
                         onKeyDown={(e) => {
                             if (e.key === 'Enter') {
                                 const val = e.currentTarget.value;
@@ -67,11 +67,11 @@ export default function Sidebar() {
                                 <Link
                                     href={item.path}
                                     className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all group ${isActive(item.path)
-                                        ? 'bg-luxury-gold/10 text-luxury-gold border border-luxury-gold/20'
-                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                        ? 'bg-yellow-400/10 text-yellow-400 border border-yellow-400/20'
+                                        : 'text-gray-400 hover:text-yellow-300 hover:bg-yellow-400/5'
                                         }`}
                                 >
-                                    <item.icon size={18} className={isActive(item.path) ? 'text-luxury-gold' : 'text-gray-500 group-hover:text-white'} />
+                                    <item.icon size={18} className={isActive(item.path) ? 'text-yellow-400' : 'text-gray-500 group-hover:text-yellow-300'} />
                                     <span className="flex-1">{item.name}</span>
                                     {item.badge && (
                                         <span className="text-[10px] bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded font-bold border border-red-500/30">
