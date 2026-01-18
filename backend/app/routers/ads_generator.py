@@ -26,9 +26,20 @@ class CreativeRequest(BaseModel):
     text_overlay: str
 
 # --- CONFIG ---
-AI_PROVIDER = "Gemini" # Options: "Gemini", "OpenAI", "Mock"
-GEMINI_API_KEY = "AIzaSyCyPxO3Qu-9Au5AWxWd8aGCvSvSTXTzw48" 
-OPENAI_API_KEY = "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"
+import os
+
+# --- CONFIG ---
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# Auto-detect provider
+if GEMINI_API_KEY:
+    AI_PROVIDER = "Gemini"
+elif OPENAI_API_KEY:
+    AI_PROVIDER = "OpenAI"
+else:
+    AI_PROVIDER = "Mock"
+
 
 # --- HELPERS ---
 def generate_with_gemini(product: str, vibe: str) -> dict:
