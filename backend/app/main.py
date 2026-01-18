@@ -1,4 +1,9 @@
 from fastapi import FastAPI, Request
+from dotenv import load_dotenv
+import os
+
+load_dotenv() # Load environment variables from .env
+
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.shopify.auth import router as shopify_router

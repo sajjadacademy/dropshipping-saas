@@ -1,62 +1,67 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict
-import random
-from app.routers.product_search import fetch_rapidapi_search, get_mock_results, ProductResult
+# ... imports ...
+import google.generativeai as genai
+import os
+import json
 
-router = APIRouter(
-    prefix="/api/ai",
-    tags=["ai-store"]
-)
+# ... existing code ...
 
-class StoreConcept(BaseModel):
-    name: str
-    tagline: str
-    description: str
-    colors: Dict[str, str] # primary, secondary, accent
-    niche: str
+# Configure Gemini
+GEMINI_KEY = os.getenv("GEMINI_API_KEY")
+if GEMINI_KEY:
+    genai.configure(api_key=GEMINI_KEY)
 
-class AIStoreResponse(BaseModel):
-    concept: StoreConcept
-    products: List[ProductResult]
-
-# "Smart" Generators
-SUFFIXES = ["ify", "ly", "verse", "zone", "hub", "flow", "box", "crate", "haus"]
-PREFIXES = ["The", "My", "Urban", "Eco", "Pro", "Ultra", "Hyper", "Zen"]
-TAGLINES = [
-    "Premium {niche} essentials for the modern life.",
-    "Elevate your {niche} experience.",
-    "The ultimate destination for {niche} lovers.",
-    "Curated quality, Unbeatable prices.",
-    "Redefining {niche} style."
-]
-
-PALETTES = [
-    {"primary": "#000000", "secondary": "#D4AF37", "accent": "#FFFFFF"}, # Luxury Gold
-    {"primary": "#1A1A1A", "secondary": "#00FF94", "accent": "#2D2D2D"}, # Cyber Neon
-    {"primary": "#2C3E50", "secondary": "#E74C3C", "accent": "#ECF0F1"}, # Bold Tech
-    {"primary": "#F4F1EA", "secondary": "#5D4037", "accent": "#8D6E63"}, # Organic/Earth
-    {"primary": "#FFFFFF", "secondary": "#3498DB", "accent": "#2980B9"}, # Clean Sky
-]
+# ... prefixes/suffixes ...
 
 @router.post("/generate-store", response_model=AIStoreResponse)
 async def generate_store_concept(params: dict):
     niche = params.get("niche", "General")
     
-    # 1. Generate Concept
-    base_name = niche.capitalize()
-    if random.random() > 0.5:
-        name = f"{random.choice(PREFIXES)} {base_name}"
-    else:
-        name = f"{base_name}{random.choice(SUFFIXES)}"
-        
-    tagline = random.choice(TAGLINES).format(niche=niche)
+    # 1. Generate Concept (Gemini or Fallback)
+    name = ""
+    tagline = ""
+    description = ""
+    
+    # Try Gemini First
+    if GEMINI_KEY:
+        try:
+            print(f"DEBUG: Asking Gemini for store concept in niche: {niche}")
+            model = genai.GenerativeModel('gemini-pro')
+            prompt = f"""
+            You are a branding expert. Create a premium, catchy, short store name, a modern tagline, and a 1-sentence description for a dropshipping store in the '{niche}' niche.
+            Return ONLY raw JSON with keys: "name", "tagline", "description". 
+            Example: {{"name": "UrbanPulse", "tagline": "Beat of the City", "description": "Urban essentials for modern living."}}
+            """
+            response = model.generate_content(prompt)
+            # Clean response if markdown code blocks exist
+            valid_json = response.text.replace("```json", "").replace("```", "").strip()
+            data = json.loads(valid_json)
+            
+            name = data.get("name")
+            tagline = data.get("tagline")
+            description = data.get("description")
+            print(f"DEBUG: Gemini Success: {name}")
+        except Exception as e:
+            print(f"DEBUG: Gemini Error: {e}. Falling back to random.")
+    
+    # Fallback if Gemini failed or no key
+    if not name:
+        base_name = niche.capitalize()
+        if random.random() > 0.5:
+            name = f"{random.choice(PREFIXES)} {base_name}"
+        else:
+            name = f"{base_name}{random.choice(SUFFIXES)}"
+        tagline = random.choice(TAGLINES).format(niche=niche)
+        description = f"A curated collection of the best {niche} products."
+
     palette = random.choice(PALETTES)
     
     concept = StoreConcept(
         name=name,
         tagline=tagline,
-        description=f"A curated collection of the best {niche} products.",
+        description=description,
         colors=palette,
         niche=niche
     )

@@ -14,9 +14,9 @@ router = APIRouter(
 )
 
 # --- CONFIG ---
-# Place your RapidAPI Key here for real data in Phase 21+
-RAPID_API_KEY = "abaf663d30msh07d6a7b29978347p14f1d2jsn9bcd4809fdb0" 
-USE_REAL_API = True # Toggle this to True when you have a key
+# Real Data Configuration (Phase 34)
+RAPID_API_KEY = os.getenv("RAPIDAPI_KEY") # Loaded from .env
+USE_REAL_API = bool(RAPID_API_KEY) # Auto-enable if key exists
 
 # --- MODELS ---
 class ProductResult(BaseModel):

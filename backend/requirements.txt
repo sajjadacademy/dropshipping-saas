@@ -12,3 +12,5 @@ ShopifyAPI
 sentry_sdk
 stripe
 python-multipart
+
+google-generativeai
