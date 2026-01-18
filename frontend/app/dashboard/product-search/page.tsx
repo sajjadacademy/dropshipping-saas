@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 import { useState, useRef } from 'react';
 import { Search, Upload, Link, X, ExternalLink, Star, ArrowRight } from 'lucide-react';
 

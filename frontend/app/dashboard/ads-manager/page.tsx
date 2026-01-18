@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 import { useState, useRef } from 'react';
 import { Layout, PenTool, Download, Upload, Wand2, Copy, Check, MessageSquare, Zap, Image as ImageIcon, Loader2 } from 'lucide-react';
 
