@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict
 import random
-from app.routers.product_search import fetch_rapidapi_search, generate_mock_results, ProductResult
+from app.routers.product_search import fetch_rapidapi_search, get_mock_results, ProductResult
 
 router = APIRouter(
     prefix="/api/ai",
@@ -66,7 +66,7 @@ async def generate_store_concept(params: dict):
     # Try real scrape first, fallback to mock
     products = fetch_rapidapi_search(niche)
     if not products:
-        products = generate_mock_results(niche, "Both")
+        products = get_mock_results(niche, "Both")
     
     # Limit to top 4 for the "Starter Pack"
     selected_products = products[:4]
