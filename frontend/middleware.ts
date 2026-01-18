@@ -9,11 +9,17 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-    if (!isPublicRoute(req)) {
-        const { userId, redirectToSignIn } = await auth();
-        if (!userId) {
-            return redirectToSignIn();
+    try {
+        if (!isPublicRoute(req)) {
+            const { userId, redirectToSignIn } = await auth();
+            if (!userId) {
+                return redirectToSignIn();
+            }
         }
+    } catch (error) {
+        console.error("Middleware execution failed:", error);
+        // Fallback: Safely redirect to sign-in page instead of crashing
+        return Response.redirect(new URL('/sign-in', req.url));
     }
 });
 
