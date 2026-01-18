@@ -128,20 +128,28 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="md:col-span-2 p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-yellow-400/50 transition-colors group relative overflow-hidden"
+              className="md:col-span-2 p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-yellow-400/50 transition-colors group relative overflow-hidden h-96"
             >
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Zap size={120} />
               </div>
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-yellow-400/20 text-yellow-400 flex items-center justify-center mb-6">
-                  <Star size={24} fill="currentColor" />
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-yellow-400/20 text-yellow-400 flex items-center justify-center">
+                    <Star size={20} fill="currentColor" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Spy on Revenue & Ads</h3>
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Spy on Revenue & Ads</h3>
-                <p className="text-gray-400 mb-6 max-w-md">
-                  See exactly what's selling right now. Track competitors' live sales, revenue, and active ads in real-time. No more guessing.
+                <p className="text-gray-400 mb-6 max-w-md text-sm">
+                  See exactly what's selling right now. Track competitors' live sales, revenue, and active ads in real-time.
                 </p>
-                <img src="/landing_hero_bg_3d.png" alt="Analytics UI" className="w-full h-64 object-cover rounded-xl border border-white/10 opacity-50 group-hover:opacity-80 transition-opacity" />
+
+                {/* Feature Image */}
+                <img
+                  src="/feature-spy.png"
+                  alt="Analytics Dashboard"
+                  className="w-full h-64 object-cover rounded-xl border border-white/10 opacity-60 group-hover:opacity-100 transition-opacity mt-2"
+                />
               </div>
             </motion.div>
 
@@ -151,24 +159,32 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="md:row-span-2 p-8 rounded-3xl bg-gradient-to-b from-yellow-400/10 to-transparent border border-yellow-400/20 hover:border-yellow-400 transition-colors group"
+              className="md:row-span-2 p-8 rounded-3xl bg-gradient-to-b from-yellow-400/10 to-transparent border border-yellow-400/20 hover:border-yellow-400 transition-colors group relative overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-xl bg-yellow-400 text-black flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-yellow-400 text-black flex items-center justify-center mb-6 shadow-lg shadow-yellow-400/20">
                 <Zap size={24} fill="currentColor" />
               </div>
               <h3 className="text-2xl font-bold mb-2">Build in 30s</h3>
-              <p className="text-gray-400 mb-8">
-                AI builds your entire branded store. Logo, colors, products, copy—done in seconds.
+              <p className="text-gray-400 mb-8 text-sm">
+                AI builds your entire branded store. Logo, products, copy—done.
               </p>
-              <div className="relative h-64 w-full bg-black/40 rounded-xl overflow-hidden border border-white/10">
-                {/* Animated UI Mockup */}
-                <div className="absolute top-4 left-4 right-4 h-8 bg-white/10 rounded-full animate-pulse"></div>
-                <div className="absolute top-16 left-4 w-1/3 h-24 bg-white/5 rounded-lg"></div>
-                <div className="absolute top-16 right-4 w-1/2 h-24 bg-white/5 rounded-lg flex flex-col gap-2 p-2">
-                  <div className="w-full h-2 bg-white/10 rounded"></div>
-                  <div className="w-2/3 h-2 bg-white/10 rounded"></div>
+
+              {/* Mobile Store Mockup */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-80 bg-black border-4 border-gray-800 rounded-t-3xl overflow-hidden shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                {/* Screen Content */}
+                <div className="w-full h-full bg-deep-obsidian flex flex-col relative">
+                  <div className="h-32 bg-[url('/landing_hero_bg_3d.png')] bg-cover relative">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute bottom-2 left-4 text-white font-bold text-lg">Zelvyra</div>
+                  </div>
+                  <div className="p-3 grid grid-cols-2 gap-2">
+                    <div className="bg-white/5 rounded h-24"></div>
+                    <div className="bg-white/5 rounded h-24"></div>
+                  </div>
+                  <div className="mt-auto p-3">
+                    <div className="w-full h-8 bg-yellow-400 rounded text-black text-xs font-bold flex items-center justify-center">Shop Now</div>
+                  </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-yellow-400/20 to-transparent"></div>
               </div>
             </motion.div>
 
@@ -178,14 +194,24 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
+              className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors flex flex-col justify-between"
             >
-              <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                <span className="text-blue-400">Meta</span> & <span className="text-pink-500">TikTok</span> Ads
-              </h3>
-              <p className="text-sm text-gray-400">
-                Launch high-converting campaigns instantly. Our AI writes the copy and targets the right audience.
-              </p>
+              <div>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <span className="text-blue-400">Meta</span> & <span className="text-pink-500">TikTok</span>
+                </h3>
+                <p className="text-sm text-gray-400">
+                  Launch high-converting campaigns instantly.
+                </p>
+              </div>
+              <div className="mt-4 flex gap-2">
+                <div className="h-2 w-full bg-blue-500/20 rounded-full overflow-hidden">
+                  <div className="h-full w-3/4 bg-blue-500"></div>
+                </div>
+                <div className="h-2 w-full bg-pink-500/20 rounded-full overflow-hidden">
+                  <div className="h-full w-1/2 bg-pink-500"></div>
+                </div>
+              </div>
             </motion.div>
 
             {/* Card: One Click Push */}
@@ -194,14 +220,49 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
+              className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
             >
-              <h3 className="text-xl font-bold mb-2 text-green-400">
-                One-Click Import
-              </h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xl font-bold text-green-400">Sync</h3>
+                <Check size={16} className="text-green-500 bg-green-500/10 p-1 rounded-full w-6 h-6" />
+              </div>
               <p className="text-sm text-gray-400">
-                Push winning products directly to your Shopify store. Images, description, pricing—synced perfectly.
+                Push products to Shopify with one click.
               </p>
+            </motion.div>
+
+            {/* NEW Card: Global Suppliers */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="md:col-span-2 p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-yellow-400/50 transition-colors group flex items-center gap-8"
+            >
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2 text-white">Global Supplier Network</h3>
+                <p className="text-gray-400 mb-6 text-sm">
+                  Connect instantly with premium suppliers from AliExpress, Alibaba, and CJ Dropshipping.
+                  <span className="text-yellow-400"> Fast shipping, lower costs.</span>
+                </p>
+                <div className="flex gap-4">
+                  <div className="px-4 py-2 bg-orange-600/20 text-orange-400 rounded-lg text-xs font-bold border border-orange-600/30">AliExpress</div>
+                  <div className="px-4 py-2 bg-yellow-600/20 text-yellow-400 rounded-lg text-xs font-bold border border-yellow-600/30">Alibaba</div>
+                  <div className="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-lg text-xs font-bold border border-blue-600/30">CJ Drop</div>
+                </div>
+              </div>
+              {/* Graphic Mockup */}
+              <div className="hidden md:flex relative w-40 h-32 items-center justify-center">
+                <div className="absolute w-24 h-24 bg-yellow-400/10 rounded-full animate-pulse"></div>
+                <div className="absolute w-32 h-32 bg-yellow-400/5 rounded-full animate-pulse delay-100"></div>
+                <div className="z-10 bg-black border border-yellow-400 rounded-xl p-3 shadow-lg shadow-yellow-400/20">
+                  <div className="text-xs font-bold text-white text-center">Connected</div>
+                  <div className="text-[10px] text-green-400 text-center">● Online</div>
+                </div>
+                {/* Floating Orbits */}
+                <div className="absolute top-0 right-0 w-3 h-3 bg-white rounded-full animate-bounce"></div>
+                <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-500 rounded-full"></div>
+              </div>
             </motion.div>
 
           </div>
