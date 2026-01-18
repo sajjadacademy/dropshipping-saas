@@ -69,42 +69,23 @@ def get_store_analytics():
     """
     Returns aggregated sales metrics.
     """
-    # Mock Data
-    total_revenue = 12450.00
-    txn_count = 85
-    aov = total_revenue / txn_count
-    
+    # Real Data State (Empty until Store Tracked)
     return {
-        "total_revenue": total_revenue,
-        "average_order_value": aov,
-        "sales_momentum": 12.5,
-        "top_products": [
-            {"title": "Obsidian Gym Leggings", "units_sold": 45, "price": "59.99"},
-            {"title": "Gold-Plated Shaker", "units_sold": 30, "price": "29.99"},
-            {"title": "Midnight Runner Shorts", "units_sold": 22, "price": "45.00"},
-            {"title": "Elite Compression Top", "units_sold": 15, "price": "55.00"},
-            {"title": "Zelvyra Cap", "units_sold": 10, "price": "25.00"},
-        ]
+        "total_revenue": 0.00,
+        "average_order_value": 0.00,
+        "sales_momentum": 0,
+        "top_products": []
     }
 
 async def sales_generator():
     """
     Yields mock sales events.
     """
-    products = [
-        "Obsidian Gym Leggings", "Gold-Plated Shaker", 
-        "Midnight Runner Shorts", "Elite Compression Top", "Zelvyra Cap"
-    ]
-    
+    # Real Data Mode: Idle until Webhooks or Real Sales
     while True:
-        await asyncio.sleep(random.uniform(2, 5))
-        sale = {
-            "id": f"sale_{random.randint(1000, 9999)}",
-            "product_title": random.choice(products),
-            "revenue": random.uniform(20.0, 150.0),
-            "timestamp": datetime.now().isoformat()
-        }
-        yield json.dumps(sale) + "\n"
+        await asyncio.sleep(30)
+        # yield newline only (empty string after split) to keep connection alive without parsing error
+        yield "\n" 
 
 @app.get("/stream-sales")
 async def stream_sales():
