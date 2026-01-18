@@ -3,9 +3,6 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
     // Redirects removed for Landing Page implementation
     // async redirects() {
     //     return [
