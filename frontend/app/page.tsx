@@ -173,16 +173,31 @@ export default function LandingPage() {
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-80 bg-black border-4 border-gray-800 rounded-t-3xl overflow-hidden shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 {/* Screen Content */}
                 <div className="w-full h-full bg-deep-obsidian flex flex-col relative">
-                  <div className="h-32 bg-[url('/landing_hero_bg_3d.png')] bg-cover relative">
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute bottom-2 left-4 text-white font-bold text-lg">Zelvyra</div>
+                  {/* Header / Banner */}
+                  <div className="h-28 bg-gradient-to-br from-purple-900 to-black relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=300&auto=format&fit=crop')] bg-cover opacity-60"></div>
+                    <div className="absolute bottom-2 left-3 text-white font-bold text-lg drop-shadow-md">Your Store</div>
                   </div>
-                  <div className="p-3 grid grid-cols-2 gap-2">
-                    <div className="bg-white/5 rounded h-24"></div>
-                    <div className="bg-white/5 rounded h-24"></div>
+
+                  {/* Products Grid */}
+                  <div className="p-3 grid grid-cols-2 gap-2 overflow-hidden">
+                    {/* Product 1 */}
+                    <div className="bg-white/5 rounded-lg p-1.5 flex flex-col gap-1">
+                      <div className="h-16 w-full bg-[url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=200&auto=format&fit=crop')] bg-cover rounded-md"></div>
+                      <div className="h-1.5 w-full bg-white/20 rounded-full"></div>
+                      <div className="h-1.5 w-1/2 bg-yellow-400/80 rounded-full"></div>
+                    </div>
+                    {/* Product 2 */}
+                    <div className="bg-white/5 rounded-lg p-1.5 flex flex-col gap-1">
+                      <div className="h-16 w-full bg-[url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=200&auto=format&fit=crop')] bg-cover rounded-md"></div>
+                      <div className="h-1.5 w-full bg-white/20 rounded-full"></div>
+                      <div className="h-1.5 w-1/2 bg-yellow-400/80 rounded-full"></div>
+                    </div>
                   </div>
-                  <div className="mt-auto p-3">
-                    <div className="w-full h-8 bg-yellow-400 rounded text-black text-xs font-bold flex items-center justify-center">Shop Now</div>
+
+                  {/* Shop Button */}
+                  <div className="mt-auto p-3 bg-gradient-to-t from-black to-transparent">
+                    <div className="w-full h-8 bg-white text-black rounded text-xs font-bold flex items-center justify-center hover:bg-yellow-400 transition-colors">Shop Now</div>
                   </div>
                 </div>
               </div>
