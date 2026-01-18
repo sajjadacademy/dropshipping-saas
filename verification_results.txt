@@ -1,0 +1,31 @@
+Verification Log
+
+--- Testing: Default Load ---
+Params: {}
+Status: 200
+Ads Returned: 0
+SUCCESS: Paging Object Present: {}
+
+--- Testing: Multi Country ---
+Params: {'country': 'US,FR'}
+Status: 200
+Ads Returned: 0
+SUCCESS: Paging Object Present: {}
+
+--- Testing: Niche ---
+Params: {'niche': 'Tech'}
+Status: 200
+Ads Returned: 0
+SUCCESS: Paging Object Present: {}
+
+--- Testing: CTA ---
+Params: {'cta': 'Shop Now'}
+Status: 200
+Ads Returned: 0
+SUCCESS: Paging Object Present: {}
+
+--- Testing: Pagination ---
+Params: {'cursor': 'test_cursor'}
+Status: 200
+Ads Returned: 0
+SUCCESS: Paging Object Present: {}
