@@ -124,6 +124,33 @@ async def stripe_webhook(request: Request):
     service = StripeService()
     return await service.handle_webhook(request)
 
+# --- Payment Endpoints ---
+class CheckoutRequest(BaseModel):
+    price_id: str
+    success_url: str
+    cancel_url: str
+
+class PortalRequest(BaseModel):
+    customer_id: str
+    return_url: str
+
+@app.post("/api/payment/create-checkout-session")
+async def create_checkout_session(req: CheckoutRequest):
+    service = StripeService()
+    return await service.create_checkout_session(
+        price_id=req.price_id,
+        success_url=req.success_url,
+        cancel_url=req.cancel_url
+    )
+
+@app.post("/api/payment/create-portal-session")
+async def create_portal_session(req: PortalRequest):
+    service = StripeService()
+    return await service.create_portal_session(
+        customer_id=req.customer_id,
+        return_url=req.return_url
+    )
+
 @app.get("/trigger-error")
 def trigger_error():
     division_by_zero = 1 / 0

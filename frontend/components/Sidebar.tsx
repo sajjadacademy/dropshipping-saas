@@ -127,7 +127,10 @@ export default function Sidebar() {
                 <div className="w-full h-1.5 bg-black/20 rounded-full mb-3 overflow-hidden">
                     <div className="h-full bg-luxury-gold w-[70%]"></div>
                 </div>
-                <button className="w-full py-2 bg-white text-indigo-900 text-xs font-black rounded-lg shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                <button
+                    onClick={() => window.location.href = '/dashboard/billing'}
+                    className="w-full py-2 bg-white text-indigo-900 text-xs font-black rounded-lg shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+                >
                     <Zap size={12} fill="currentColor" />
                     UPGRADE NOW
                 </button>
