@@ -17,18 +17,22 @@ export const metadata: Metadata = {
   description: "The gold standard for Shopify intelligence and sales tracking.",
 };
 
+import { ClerkProvider } from "@clerk/nextjs";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-deep-obsidian text-white`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-deep-obsidian text-white`}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
