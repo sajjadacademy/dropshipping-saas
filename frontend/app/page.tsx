@@ -170,7 +170,7 @@ export default function LandingPage() {
               </p>
 
               {/* Mobile Store Mockup */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-80 bg-black border-4 border-gray-800 rounded-t-3xl overflow-hidden shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="relative mt-8 mx-auto md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 w-48 h-80 bg-black border-4 border-gray-800 rounded-t-3xl overflow-hidden shadow-2xl md:translate-y-4 group-hover:md:translate-y-0 transition-transform duration-500">
                 {/* Screen Content */}
                 <div className="w-full h-full bg-deep-obsidian flex flex-col relative">
                   {/* Header / Banner */}
