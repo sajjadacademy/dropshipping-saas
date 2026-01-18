@@ -101,6 +101,8 @@ class StoreScanner:
         except Exception as e:
             scan_result["error"] = str(e)
             print(f"Scan Error: {e}")
+        
+        return scan_result
 
     # ... (Previous code)
 
