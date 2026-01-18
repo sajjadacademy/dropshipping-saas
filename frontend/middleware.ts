@@ -8,8 +8,12 @@ const isPublicRoute = createRouteMatcher([
     "/sign-up(.*)"
 ]);
 
+console.log("Middleware: Loaded");
+
 export default clerkMiddleware(async (auth, req) => {
+    console.log("Middleware: Processing request", req.url);
     if (!isPublicRoute(req)) {
+        console.log("Middleware: Protected Route, Checking Auth");
         await auth.protect();
     }
 });
