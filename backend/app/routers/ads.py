@@ -23,7 +23,7 @@ class AdCreative(BaseModel):
     format: str 
     active_days: int
     start_date: str
-    copy: str
+    ad_copy: str
     cta: str 
     store_name: str
     store_url: str
@@ -119,7 +119,7 @@ def search_ads(
             "format": "Image",
             "active_days": days_active,
             "start_date": start_date,
-            "copy": item.get("ad_creative_bodies", [""])[0] if item.get("ad_creative_bodies") else "No copy",
+            "ad_copy": item.get("ad_creative_bodies", [""])[0] if item.get("ad_creative_bodies") else "No copy",
             "cta": item.get("ad_creative_link_captions", ["Shop Now"])[0] if item.get("ad_creative_link_captions") else "Shop Now",
             "store_name": "Unknown Store",
             "store_url": "#",

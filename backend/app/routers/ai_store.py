@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict
 import random
-from app.routers.product_search import fetch_aliexpress_real, generate_mock_results, ProductResult
+from app.routers.product_search import fetch_rapidapi_search, generate_mock_results, ProductResult
 
 router = APIRouter(
     prefix="/api/ai",
@@ -64,7 +64,7 @@ async def generate_store_concept(params: dict):
     # 2. Fetch Products (Curated Top 4)
     # Reuse scraper from product_search
     # Try real scrape first, fallback to mock
-    products = fetch_aliexpress_real(niche)
+    products = fetch_rapidapi_search(niche)
     if not products:
         products = generate_mock_results(niche, "Both")
     
