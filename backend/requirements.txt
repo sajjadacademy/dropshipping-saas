@@ -9,3 +9,6 @@ requests
 playwright
 beautifulsoup4
 ShopifyAPI
+sentry_sdk
+stripe
+python-multipart
