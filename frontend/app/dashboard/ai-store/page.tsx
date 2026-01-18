@@ -35,7 +35,7 @@ export default function AIStoreWizard() {
         }, 300);
 
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/store-ai/scan', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/store-ai/scan`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url: productUrl, language })
@@ -209,7 +209,7 @@ export default function AIStoreWizard() {
                                             if (!scannedData?.title) return;
                                             setIsScanning(true); // Reuse loading state
                                             try {
-                                                const res = await fetch('http://127.0.0.1:8000/api/store-ai/generate-images', {
+                                                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/store-ai/generate-images`, {
                                                     method: 'POST',
                                                     headers: { 'Content-Type': 'application/json' },
                                                     body: JSON.stringify({ prompt: scannedData.title })
@@ -372,7 +372,7 @@ export default function AIStoreWizard() {
                                             if (btn) btn.innerText = "Deploying...";
 
                                             try {
-                                                const res = await fetch('http://127.0.0.1:8000/api/store-ai/deploy', {
+                                                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/store-ai/deploy`, {
                                                     method: 'POST',
                                                     headers: { 'Content-Type': 'application/json' },
                                                     body: JSON.stringify({
@@ -401,7 +401,7 @@ export default function AIStoreWizard() {
                                 <div className="space-y-4 border-l border-white/10 pl-8 flex flex-col justify-center">
                                     <div className="text-sm text-gray-400 mb-2">Or handle it manually:</div>
                                     <button
-                                        onClick={() => window.open('http://127.0.0.1:8000/api/store-ai/download', '_blank')}
+                                        onClick={() => window.open(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/store-ai/download`, '_blank')}
                                         className="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
                                     >
                                         <DownloadIcon /> Download Theme (.zip)
@@ -439,7 +439,7 @@ function CustomizeStep({ setStep, storeName, scannedData, onSave }: any) {
     const handlePaletteGen = async () => {
         setLoadingPalette(true);
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/store-ai/generate-palette', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/store-ai/generate-palette`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt: "Luxury generic store" })

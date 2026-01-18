@@ -31,7 +31,7 @@ export default function ProductSearchPage() {
         formData.append('file', file);
 
         try {
-            const res = await fetch('http://localhost:8000/api/search/upload', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/search/upload`, {
                 method: 'POST',
                 body: formData
             });
@@ -52,7 +52,7 @@ export default function ProductSearchPage() {
             let body: any = {};
 
             if (activeTab === 'image') {
-                endpoint = 'http://localhost:8000/api/search/image';
+                endpoint = `${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/search/image`;
                 const formData = new FormData();
                 formData.append('image_url', previewImage || ''); // In real app, pass the backend URL or Base64
                 formData.append('source', source);
@@ -64,7 +64,7 @@ export default function ProductSearchPage() {
 
             } else {
                 // Link Search
-                endpoint = 'http://localhost:8000/api/search/link';
+                endpoint = `${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/search/link`;
                 // First get image from link
                 const res = await fetch(endpoint, {
                     method: 'POST',
@@ -101,7 +101,7 @@ export default function ProductSearchPage() {
             formData.append('image_url', previewImage || '');
             formData.append('source', source);
 
-            const res = await fetch('http://127.0.0.1:8000/api/search/image', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/search/image`, {
                 method: 'POST',
                 body: formData
             });

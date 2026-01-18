@@ -45,7 +45,7 @@ export default function AdsManagerPage() {
 
         try {
             // Simulate Upload to Backend (Passing preview URL as placeholder for now)
-            const res = await fetch('http://localhost:8000/api/ads-gen/creative', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/ads-gen/creative`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -72,7 +72,7 @@ export default function AdsManagerPage() {
         setGeneratedCopy(null);
 
         try {
-            const res = await fetch('http://localhost:8000/api/ads-gen/copy', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'}/api/ads-gen/copy`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
